@@ -5,6 +5,8 @@
 
 # cosmospy
 
+Thanks to cosmospy, this fork merely switches bech32 prefix for Secret Network.
+
 <!--- Don't edit the version line below manually. Let bump2version do it for you. -->
 
 > Version 5.0.2

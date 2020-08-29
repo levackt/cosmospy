@@ -10,7 +10,7 @@ test_vector: Wallet = {
     "public_key": bytes.fromhex(
         "02ba66a84cf7839af172a13e7fc9f5e7008cb8bca1585f8f3bafb3039eda3c1fdd"
     ),
-    "address": "cosmos1r5v5srda7xfth3hn2s26txvrcrntldjumt8mhl",
+    "address": "secret1r5v5srda7xfth3hn2s26txvrcrntldjuewnj2r",
 }
 
 seed_test_vector: Wallet = {
@@ -53,6 +53,6 @@ def test_generate_wallet(mocker):
         "public_key": bytes.fromhex(
             "03a7cc51198fc666901ec7b627926dad0c85d128ebe3251a132f009dcde1d64e03"
         ),
-        "address": "cosmos1dep39rnnwztpt63jx0htxrkt3lgku2cdr5qawx",
+        "address": "secret1dep39rnnwztpt63jx0htxrkt3lgku2cdp355n6",
     }
     assert generate_wallet() == expected_wallet

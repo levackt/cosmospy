@@ -17,14 +17,14 @@ def test_sign():
                 "value": {
                     "inputs": [
                         {
-                            "address": "cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66",
-                            "coins": [{"amount": "1", "denom": "STAKE"}],
+                            "address": "secret1lgharzgds89lpshr7q8kcmd2esnxkfpwwekakl",
+                            "coins": [{"amount": "1", "denom": "USCRT"}],
                         }
                     ],
                     "outputs": [
                         {
-                            "address": "cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt",
-                            "coins": [{"amount": "1", "denom": "STAKE"}],
+                            "address": "secret1dep39rnnwztpt63jx0htxrkt3lgku2cdp355n6",
+                            "coins": [{"amount": "1", "denom": "USCRT"}],
                         }
                     ],
                 },
@@ -42,7 +42,7 @@ def test_sign():
     tx._get_sign_message = Mock(return_value=unordered_sign_message)  # type: ignore
 
     expected_signature = (
-        "YjJhlAf7aCnUtLyBNDp9e6LKuNgV7hJC3rmm0Wro5nBsIPVtWzjuobsp/AhR5Kht+HcRF2zBq4AfoNQMIbY6fw=="
+        "+CBgG6yJWT28T9ucjGJ8JglRxdPajuFAOCqpYiY6L5Q3I4P5ulEjP86L1GBdpLkPU+c4KfUTh3xp4y9LBEuqIg=="
     )
 
     actual_signature = tx._sign()
@@ -50,7 +50,7 @@ def test_sign():
 
 
 def test_get_pushable_tx():
-    expected_pushable_tx = '{"tx":{"msg":[{"type":"cosmos-sdk/MsgSend","value":{"from_address":"cosmos1lgharzgds89lpshr7q8kcmd2esnxkfpwvuz5tr","to_address":"cosmos103l758ps7403sd9c0y8j6hrfw4xyl70j4mmwkf","amount":[{"denom":"uatom","amount":"387000"}]}}],"fee":{"gas":"37000","amount":[{"denom":"uatom","amount":"1000"}]},"memo":"","signatures":[{"signature":"chbQMmrg18ZQSt3q3HzW8S8pMyGs/TP/WIbbCyKFd5IiReUY/xJB2yRDEtF92yYBjxEU02z9JNE7VCQmmxWdQw==","pub_key":{"type":"tendermint/PubKeySecp256k1","value":"A49sjCd3Eul+ZXyof7qO460UaO73otrmySHyTNSLW+Xn"},"account_number":"11335","sequence":"0"}]},"mode":"sync"}'  # noqa: E501
+    expected_pushable_tx = '{"tx":{"msg":[{"type":"cosmos-sdk/MsgSend","value":{"from_address":"secret1lgharzgds89lpshr7q8kcmd2esnxkfpwwekakl","to_address":"secret1dep39rnnwztpt63jx0htxrkt3lgku2cdp355n6","amount":[{"denom":"uscrt","amount":"387000"}]}}],"fee":{"gas":"37000","amount":[{"denom":"uscrt","amount":"1000"}]},"memo":"","signatures":[{"signature":"Om7Yd13MNvyuxt1ej//x3ywBRYAbD7N8rsReIzXQUeBnlfh5sMFD129DOg2xWxIS/L3T2LNkq7OPo02q3Se2og==","pub_key":{"type":"tendermint/PubKeySecp256k1","value":"A49sjCd3Eul+ZXyof7qO460UaO73otrmySHyTNSLW+Xn"},"account_number":"11335","sequence":"0"}]},"mode":"sync"}'  # noqa: E501
 
     _tx_total_cost = 388000
     fee = 1000
@@ -62,8 +62,8 @@ def test_get_pushable_tx():
         sequence=0,
         fee=fee,
         gas=37000,
-        chain_id="cosmoshub-2",
+        chain_id="enigma-pub-testnet-2",
     )
-    tx.add_transfer(recipient="cosmos103l758ps7403sd9c0y8j6hrfw4xyl70j4mmwkf", amount=amount)
+    tx.add_transfer(recipient="secret1dep39rnnwztpt63jx0htxrkt3lgku2cdp355n6", amount=amount)
     pushable_tx = tx.get_pushable()
     assert pushable_tx == expected_pushable_tx
